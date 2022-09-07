@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
-
-import styles from './Counter.module.css';
+import React from "react";
+import { increment, decrement, incrementByAmount } from "./redux/counterSlice";
+import { useAppDispatch, useAppSelector } from "./redux/hooks";
+import styles from "./Counter.module.css";
 
 export function Counter() {
-  const [count, setCount] = useState(0);
-
+  const dispatch = useAppDispatch();
+  const count = useAppSelector((state) => state.counter.value);
 
   return (
     <div>
@@ -12,7 +13,7 @@ export function Counter() {
         <button
           className={styles.button}
           aria-label="Decrement value"
-          onClick={() => setCount(prev => prev + 1)}
+          onClick={() => dispatch(decrement())}
         >
           -
         </button>
@@ -20,13 +21,18 @@ export function Counter() {
         <button
           className={styles.button}
           aria-label="Increment value"
-          onClick={() => setCount(prev => prev - 1)}
+          onClick={() => dispatch(increment())}
         >
           +
         </button>
+        <button
+          className={styles.button}
+          aria-label="Increment value"
+          onClick={() => dispatch(incrementByAmount(2))}
+        >
+          2+
+        </button>
       </div>
-      {/* <div className={styles.row}>
-      </div> */}
     </div>
   );
 }
