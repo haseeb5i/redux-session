@@ -1,6 +1,6 @@
 import React from "react";
-import { increment, decrement, incrementByAmount } from "./redux/counterSlice";
-import { useAppDispatch, useAppSelector } from "./redux/hooks";
+import { increment, decrement, incrementByAmount } from "src/redux/counterSlice";
+import { useAppDispatch, useAppSelector } from "src/redux/hooks";
 import styles from "./Counter.module.css";
 
 export function Counter() {
